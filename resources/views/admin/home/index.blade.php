@@ -32,7 +32,7 @@
           <!-- Info boxes -->
           <div class="row">
             <div class="col-md-3 col-sm-6">
-              <a href="{{url('/admin/blogs')}}">
+                <a href="{{url('/admin/blogs')}}">
                 <div class="info-box">
                   <span class="info-box-icon bg-info elevation-1">
                     <i class="fas fa-blog"></i>

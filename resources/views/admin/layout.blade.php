@@ -113,7 +113,7 @@
               <a href="{{url('admin/bloggers')}}" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
-                 الكتاب
+                 البلوغر
                 </p>
               </a>
             </li>
@@ -121,7 +121,15 @@
               <a href="{{url('admin/blogs')}}" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
-                 المقالات
+                 مقالات  الأدمن
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{url('admin/bloggers_blogs')}}" class="nav-link">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                 مقالات  البلوغر
                 </p>
               </a>
             </li>

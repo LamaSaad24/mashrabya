@@ -8,7 +8,7 @@
             </button>
             <h5 class="modal-title" id="exampleModalLabel">إضافة عنصر جديد</h5>
         </div>
-        <form action="{{url('dashboard/blogs/store')}}"   method="post" enctype="multipart/form-data" dir="rtl">
+        <form action="{{url('/blogger/blog/store')}}"   method="post" enctype="multipart/form-data" dir="rtl">
           @csrf
             <div class="modal-body bg-info">
                 <div class="mb-3">
@@ -38,13 +38,7 @@
                   <label for="" class="form-label float-end"> meta description </label>
                   <input type="text" name="description" class="form-control" id="">
                 </div>
-                <div class="mb-3">
-                  <label for="name" class="form-label float-end">الحالة</label>
-                  <select class="form-select" name="active"  aria-label="Default select example">
-                      <option value="1">فعالة</option>
-                      <option value="0">غير فعالة</option>
-                    </select>
-                </div>
+
                 <div class="mb-3">
                     <label for="" class="form-label float-end">كلمات دلالية</label>
                     <select class="form-select" name="tags[]" multiple="multiple" id="tags">
@@ -80,7 +74,7 @@
             </button>
             <h5 class="modal-title" id="exampleModalLabel">حذف عنصر</h5>
         </div>
-        <form action="{{url('dashboard/blogs/delete')}}"  method="post" dir="rtl">
+        <form action="{{url('blogger/blog/delete')}}"  method="post" dir="rtl">
           @csrf
             <div class="modal-body bg-info">
               <p class="text-right">هل أنت متأكد من حذف العنصر ؟</p>
@@ -105,7 +99,7 @@
           </button>
           <h5 class="modal-title" id="exampleModalLabel"> تعديل بيانات العنصر</h5>
       </div>
-      <form action="{{url('dashboard/blogs/update')}}"  method="post" enctype="multipart/form-data" dir="rtl">
+      <form action="{{url('blogger/blog/update')}}"  method="post" enctype="multipart/form-data" dir="rtl">
         @csrf
           <div class="modal-body bg-info">
             <input type="hidden" name="id" id="editBlog-form-id">
@@ -135,13 +129,6 @@
               <div class="mb-3">
                 <label for="editBlog-form-description_meta" class="form-label float-end"> description meta</label>
                 <input type="text" class="form-control" name="description" id="editBlog-form-description_meta"/>
-              </div>
-              <div class="mb-3">
-                <label for="editBlog-form-active" class="form-label float-end">الحالة</label>
-                <select class="form-control" name="active" id="editBlog-form-active">
-                  <option value="0">غير فعالة</option>
-                  <option value="1">فعالة</option>
-                </select>
               </div>
               <div class="mb-3">
                 <label for="editBlog-form-tags" class="form-label float-end">كلمات دلالية</label>

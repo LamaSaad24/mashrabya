@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Hash;
 class AdminBloggerController extends Controller
 {
        //show users
-       public function show (){
+    public function show (){
         $data['users'] = DB::select("SELECT * FROM `bloggers` ");
 
         // dd($data);

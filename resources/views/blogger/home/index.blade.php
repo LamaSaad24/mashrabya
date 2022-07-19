@@ -32,7 +32,7 @@
           <!-- Info boxes -->
           <div class="row">
             <div class="col-md-3 col-sm-6">
-              <a href="{{url('/dashboard/blogs')}}">
+              <a href="{{url('blogger/blog')}}">
                 <div class="info-box">
                   <span class="info-box-icon bg-info elevation-1">
                     <i class="fas fa-blog"></i>
@@ -41,7 +41,7 @@
                   <div class="info-box-content text-black text-end">
                     <span class="info-box-text">المقالات</span>
                     <span class="info-box-number">
-                      5
+                      {{$blog[0]->count}}
                     </span>
                   </div>
                 </div>

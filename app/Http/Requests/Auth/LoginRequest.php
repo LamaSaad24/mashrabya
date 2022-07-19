@@ -31,7 +31,6 @@ class LoginRequest extends FormRequest
         return [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
-            'active' => '1'
         ];
     }
 
@@ -42,11 +41,11 @@ class LoginRequest extends FormRequest
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function authenticate($guard = 'web')
+    public function authenticate($guard='web')
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::guard($guard)->attempt($this->only('email', 'password','active'), $this->boolean('remember'))) {
+        if (! Auth::guard($guard)->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([

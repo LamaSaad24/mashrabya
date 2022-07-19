@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -31,8 +32,23 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        
+        if(Auth::user()->active){
+            return redirect()->route('admin.dashboard');
 
-        return redirect()->route('admin.dashboard');
+        }else{
+            Auth::guard('web')->logout();
+
+            $request->session()->invalidate();
+
+            $request->session()->regenerateToken();
+            throw ValidationException::withMessages([
+                'active' => trans('auth.actived'),
+            ]);
+
+            return redirect()->route('admin.login');
+        }
+
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminBlogController;
+use App\Http\Controllers\Admin\AdminBloggerBlogController;
 use App\Http\Controllers\admin\AdminBloggerController;
 use App\Http\Controllers\admin\AdminHomeController;
 use App\Http\Controllers\admin\AdminMainCatsController;
@@ -51,12 +52,20 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::post('/users/store', [AdminUserController::class, "store"]);
     Route::post('/users/delete', [AdminUserController::class, "delete"]);
     Route::post('/users/update', [AdminUserController::class, "update"]);
-    // ---subcat 
+    // ---blogs  of admin
     Route::get('/blogs', [AdminBlogController::class, "show"]);
     Route::post('/blogs/store', [AdminBlogController::class, "store"]);
     Route::post('/blogs/delete', [AdminBlogController::class, "delete"]);
     Route::get('/blogs/update/{id}', [AdminBlogController::class, "update"]);
     Route::post('/blogs/update', [AdminBlogController::class, "updateBlog"]);
+     // ---blogs  of blogger
+    Route::get('/bloggers_blogs', [AdminBloggerBlogController::class, "show"]);
+    Route::get('/bloggers_blogs/{id}', [AdminBloggerBlogController::class, "showBlog"]);
+    Route::get('/bloggers_blogs/active/{id}', [AdminBloggerBlogController::class, "activeBlog"]);
+    Route::get('/bloggers_blogs/unactive/{id}', [AdminBloggerBlogController::class, "unactiveBlog"]);
+    Route::get('/bloggers_blogs/delete/{id}', [AdminBloggerBlogController::class, "deleteBlog"]);
+    Route::get('/bloggers_blogs/undelete/{id}', [AdminBloggerBlogController::class, "undeleteBlog"]);
+    
     // ---setting
     Route::get('/settings', [AdminSettingController::class, "show"]);
     Route::post('/settings/store', [AdminSettingController::class, "store"]);

@@ -1,4 +1,4 @@
-@extends("admin.layout")
+@extends('blogger.layout')
 
 @section("title")
     تحديث بيانات المقالة
@@ -21,8 +21,8 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active">تحديث بيانات هذه المقالة</li>
-                            <li class="breadcrumb-item"><a href="{{url('/dashboard/blogs')}}">المقالات </a></li>
-                            <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">الصفحة الرئيسة</a></li>
+                            <li class="breadcrumb-item"><a href="{{url('/blogger/blog')}}">المقالات </a></li>
+                            <li class="breadcrumb-item"><a href="{{url('/blogger/dashboard')}}">الصفحة الرئيسة</a></li>
                         </ol>
                         </div><!-- /.col -->
                         <div class="col-sm-6 text-end">
@@ -73,7 +73,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form action="{{url('dashboard/blogs/update')}}"  method="post" enctype="multipart/form-data" dir="rtl">
+                        <form action="{{url('blogger/blog/update')}}"  method="post" enctype="multipart/form-data" dir="rtl">
                             @csrf
                                 <div class="modal-body bg-info">
                                 <input type="hidden" value="{{$blog[0]->id}}" name="id" id="editBlog-form-id">

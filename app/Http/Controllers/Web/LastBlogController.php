@@ -12,11 +12,9 @@ class LastBlogController extends Controller
     public function show (){
         $data['lastBlogs']  = DB::select('SELECT  
         blogs.id, blogs.title, blogs.image, blogs.created_at, blogs.image_meta, 
-        users.name as userName,
         sub_cats.name as subCat,
         main_cats.name as mainCat
         from blogs 
-        JOIN users ON users.id= blogs.user_id 
         JOIN sub_cats ON sub_cats.id = blogs.sub_cat_id 
         JOIN main_cats ON sub_cats.main_cat_id=main_cats.id
         where blogs.active =1

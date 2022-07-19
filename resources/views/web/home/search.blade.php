@@ -48,6 +48,27 @@
                                 </div>
                             </div>
                             @endforeach
+                            @foreach ( $bloggers_blogs as $blog )
+                            <div class="col-md-4 my-2">
+                                <div class="item">
+                                    <div class="item-img">
+                                        <img src="{{asset("upload/{$blog->image}")}}" class="w-100" alt="{{$blog->image_meta}}"> 
+                                        <p>{{$blog->mainCat}} -> {{$blog->subCat}} </p>
+                                    </div>
+                                    <div class="item-body py-3">
+                                        <h3>{{$blog->title}}</h3>
+                                        <p>
+                                            <span class="text-muted">كتب  : {{$blog->userName}}</span> 
+                                            
+                                            <i class="fas  fa-circle text-muted"></i>
+                                            في تاريخ 
+                                            {{$blog->created_at}}
+                                        </p>
+                                        <a href="{{url("type/blog/{$blog->id}")}}" class="link">أقرأ أكثر</a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         </div>
                         @else
                         <div class="container my-5">

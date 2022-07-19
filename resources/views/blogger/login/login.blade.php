@@ -23,58 +23,52 @@
 </head>
 <body class="hold-transition login-page">
 
-<x-guest-layout class="bg-danger">
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-        <div class="card-header text-primary">
-            <a href="/" class="h1"><b>Mashrabya</b></a>
-            <b>Bologger</b>
+
+    <section class="bg-white p-5 rounded">
+        <div class="container">
+            <h1 class="text-primary text-center">
+                Mashrabya
+             </h1>
+            <!-- Session Status -->
+            <x-auth-session-status class="mb-4" :status="session('status')" />
+
+            <!-- Validation Errors -->
+            @if ($errors->any())
+                <div class="toast-container position-fixed top-0 end-0 p-3 " style="z-index:999999" >
+                <div id="liveToast" class="toast alert-danger show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" onclick="$(this).closest('.toast').toast('hide')"></button>
+                        <strong class="ms-auto">هنالك خطأ</strong>
+                    </div>
+                    @foreach ($errors->all() as $error)
+                    <div class="toast-body text-right">
+                        {{ $error }}
+                    </div>
+                    @endforeach
+                </div>
+                </div>
+            @endif
+            <form method="POST" action="{{ route('blogger.login') }}" >
+                @csrf
+            <div class="row mb-3">
+                <label for="email" class=" col-form-label">Email :</label>
+                <div class="">
+                <input  id="email" class="block form-control mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="password" class=" col-form-label">Password :</label>
+                <div class="">
+                <input  id="password" class="block form-control mt-1 w-full"
+                type="password"
+                name="password"
+                required autocomplete="current-password">
+                </div>
+            </div>
+            <button type="submit" class="btn  btn-primary">Sign in</button>
+            </form>
         </div>
-        </x-slot>
-
-        <x-jet-validation-errors class="mb-4" />
-
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                {{-- @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif --}}
-
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
-
+    </section>
 
 
 

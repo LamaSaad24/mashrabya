@@ -29,7 +29,6 @@ Route::get('last-blog', [LastBlogController::class, "show"]);
 
 
 
-
+require __DIR__.'/blogger.php';
 require __DIR__.'/admin.php';
 
-require __DIR__.'/blogger.php';

@@ -133,8 +133,7 @@
                                                             
                                                             <div class="created-date">
                                                                 <span>
-                                                                    كُتب 
-                                                                    {{$lastBlog->userName}}
+                                                                    كتبت
                                                                     بتاريخ:
                                                                     <span class="created-date">
                                                                         {{$lastBlog->created_at}}

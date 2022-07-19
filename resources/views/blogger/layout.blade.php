@@ -49,7 +49,10 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item d-none d-sm-inline-block">
           <a href="{{url('/dashboard')}}" class="nav-link">الصفحة الرئيسية</a>
-        </li>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{url('/dashboard')}}" class="nav-link">الصفحة الرئيسية</a>
+    </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -78,7 +81,7 @@
             <!-- Add icons to the links using the .nav-icon class
                   with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <a href="{{url('/dashboard')}}" class="nav-link">
+              <a href="{{url('blogger/dashboard')}}" class="nav-link">
                 <i class="nav-icon fas fa-home"></i>
                 <p>
                   الصفحة الرئيسية
@@ -86,7 +89,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{url('/dashboard/blogs')}}" class="nav-link">
+              <a href="{{url('/blogger/blog')}}" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
                   المقالات
@@ -98,7 +101,7 @@
               <a href="#" class="nav-link ">
                 <i class="nav-icon fas fa-user-alt"></i>
                 <p>
-                  lama
+                  {{auth('blogger')->user()->name}}
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>

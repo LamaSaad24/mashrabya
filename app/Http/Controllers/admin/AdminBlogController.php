@@ -90,6 +90,7 @@ class AdminBlogController extends Controller
     
     // update blog 
     public function update($id){
+        Blog::findOrFail($id);
         $data['blog'] = DB::select('SELECT blogs.*,
         users.name as userName, sub_cats.name as subCat,sub_cats.id as subCatId, main_cats.name AS mainCat FROM `blogs`
         JOIN users ON blogs.user_id = users.id 

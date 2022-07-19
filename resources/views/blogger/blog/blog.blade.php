@@ -1,5 +1,5 @@
 
-@extends("admin.layout")
+@extends('blogger.layout')
 
 @section("title")
     المقالات
@@ -27,7 +27,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active">المقالات</li>
+                    <li class="breadcrumb-item active">المقالات التي قمت بإضافتها</li>
                     <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">الصفحة الرئيسة</a></li>
                 </ol>
                 </div><!-- /.col -->
@@ -99,7 +99,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                      {{-- @foreach ($blogs as $blog)
+                      @foreach ($blogs as $blog)
                         <tr>
                           <td>{{$blog->title}}</td>
                           <td><img src="{{url("upload/{$blog->image}")}}" class="img-fluid" style="width:80px;height:80px;object-fit:cover" alt="{{$blog->image_meta}}"></td>
@@ -135,10 +135,10 @@
                             data-bs-target="#deleteBlog"
                             class="btn-danger btn" title="delete" 
                             onclick="deleteBlogItem({{$blog->id}})"><i class="fas fa-trash"></i></button>
-                            <a href="{{url("dashboard/blogs/update/{$blog->id}")}}" class="btn-info btn"><i class="fas fa-pen"></i></a>
+                            <a href="{{url("blogger/blog/update/{$blog->id}")}}" class="btn-info btn"><i class="fas fa-pen"></i></a>
                           </td>
                         </tr>
-                      @endforeach --}}
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -159,7 +159,7 @@
   <!-- /.content-wrapper -->
   
   
-  @extends('admin.modal.modelBlog')
+  @extends('blogger.modal.modelBlog')
 
 
   @endsection

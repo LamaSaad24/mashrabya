@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index (){
 
         $data["mainCats"] = DB::select('SELECT distinct main_cats.id, main_cats.name, main_cats.image , main_cats.image_meta ,
-        (select COUNT(*) from blogs JOIN sub_cats ON sub_cats.id = blogs.sub_cat_id WHERE blogs.sub_cat_id=sub_cats.id AND sub_cats.main_cat_id= main_cats.id) as total 
+        (select COUNT(*) from blogs JOIN sub_cats ON sub_cats.id = blogs.sub_cat_id WHERE blogs.sub_cat_id=sub_cats.id AND sub_cats.main_cat_id= main_cats.id And blogs.active=1) as total 
         FROM main_cats
         JOIN sub_cats ON sub_cats.main_cat_id = main_cats.id
         WHERE main_cats.active=1');
@@ -39,7 +39,14 @@ class HomeController extends Controller
         JOIN sub_cats ON sub_cats.id=blogs.sub_cat_id 
         JOIN main_cats ON main_cats.id=sub_cats.main_cat_id
         JOIN users ON users.id = blogs.user_id
-        WHERE `title` LIKE '%".$keyword."%' OR content LIKE '%".$keyword."%' ");
+        WHERE ( blogs.`title` LIKE '%".$keyword."%' OR blogs.content LIKE '%".$keyword."%') AND blogs.active=1");
+
+        $data['bloggers_blogs'] = DB::select("
+        SELECT blogs.*, sub_cats.name AS subCat,main_cats.id as main_cat_id, main_cats.name as mainCat, bloggers.name as userName from blogs   
+        JOIN sub_cats ON sub_cats.id=blogs.sub_cat_id 
+        JOIN main_cats ON main_cats.id=sub_cats.main_cat_id
+        JOIN bloggers ON bloggers.id = blogs.blogger_id
+        WHERE ( blogs.`title` LIKE '%".$keyword."%' OR blogs.content LIKE '%".$keyword."%') AND blogs.active=1");
 
         return view('web.home.search')->with($data);
 

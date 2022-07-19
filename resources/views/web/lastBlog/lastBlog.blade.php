@@ -49,8 +49,7 @@
                                 <div class="item-body py-3">
                                     <h3>{{$lastBlog->title}}</h3>
                                     <p>
-                                        <span class="text-muted">كتب  :</span> 
-                                        {{$lastBlog->userName}} 
+                                        <span class="text-muted">كتبت بتاريخ  </span> 
                                         <i class="fas  fa-circle text-muted"></i>
                                         {{$lastBlog->created_at}}
                                     </p>

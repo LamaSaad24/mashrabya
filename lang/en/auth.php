@@ -13,8 +13,9 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => 'الايميل أو كلمة السر خاطئة',
+    'actived' => 'حسابك غير فعال تواصل مع المسؤولين',
+    'password' => 'كلمة السر غير صحيحه',
+    'throttle' => 'محاولات دخول عديدة الرجاء المحاولة لاحقا',
 
 ];
